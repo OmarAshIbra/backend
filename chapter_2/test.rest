@@ -1,0 +1,17 @@
+### type 2 - API endpoints
+GET http://localhost:5090/api/madison
+
+
+### type 3 - API endpoints
+POST http://localhost:5090/api/madison
+Content-Type: application/json
+
+{
+  "name": "Mahfouz ",
+  "age": "23",
+  "greet": "Hi my name is madison",
+  "favColor": "yellow",
+  "favoriteNumber": "12345",
+  "hobbies": ["reading", "painting", "cooking"]
+}
+
