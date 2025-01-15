@@ -1,8 +1,12 @@
 import express from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
-
+import todosRouter from "./routes/todoRoutes.js";
+import addMiddleware from "./middleware/authmeddleware.js";
+// Load environment variables
+dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -20,6 +24,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/todos", addMiddleware, todosRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

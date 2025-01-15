@@ -5,8 +5,8 @@ const db = new DatabaseSync("./database.db");
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL
+    username TEXT  NOT NULL,
+    password TEXT  NOT NULL
     )   
 `);
 
