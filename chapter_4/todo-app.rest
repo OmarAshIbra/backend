@@ -1,0 +1,49 @@
+### GET /
+
+GET http://localhost:5006/
+
+
+
+#### LOGIN a user POST /auth/login
+POST http://localhost:5006/auth/login
+Content-Type: application/json
+
+
+{
+    "username": "admsidsn",
+    "password": "admain"
+}
+
+
+### REGISTER a user POST /auth/register
+POST http://localhost:5006/auth/register
+Content-Type: application/json
+
+{
+    "username": "admsidsn",
+    "password": "admain"
+}
+
+
+### Fetch all todos GET /todo (protected)
+GET http://localhost:5006/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+
+### Creates  todos GET /todo (protected)
+POST http://localhost:5006/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+Content-Type: application/json
+
+
+{
+    "task":" you should be able to eat from the spoon and fork by the end of the day"
+}
+
+### Update a todo PUT /todo/:id (protected)
+PUT http://localhost:5006/todos/9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+Content-Type: application/json
+
+{
+    "completed": 1
+}
