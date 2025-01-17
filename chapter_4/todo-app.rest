@@ -10,7 +10,7 @@ Content-Type: application/json
 
 
 {
-    "username": "admsidsn",
+    "username": "admsids@gmail.com",
     "password": "admain"
 }
 
@@ -20,18 +20,18 @@ POST http://localhost:5006/auth/register
 Content-Type: application/json
 
 {
-    "username": "admsidsn",
+    "username": "admsid2s@gmail.com",
     "password": "admain"
 }
 
 
 ### Fetch all todos GET /todo (protected)
 GET http://localhost:5006/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+Authorization: yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTAxNzcwLCJleHAiOjE3MzcxMDUzNzB9.sOksKmqH5eR05fOjztjer_cGqIMoqXAwufWoFzvFAyQ
 
 ### Creates  todos GET /todo (protected)
 POST http://localhost:5006/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+Authorization: yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTAxNzcwLCJleHAiOjE3MzcxMDUzNzB9.sOksKmqH5eR05fOjztjer_cGqIMoqXAwufWoFzvFAyQ
 Content-Type: application/json
 
 
@@ -40,8 +40,17 @@ Content-Type: application/json
 }
 
 ### Update a todo PUT /todo/:id (protected)
-PUT http://localhost:5006/todos/9
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNzM2OTUxNzMyLCJleHAiOjE3MzY5NTUzMzJ9.4zsOgi-pJy2kgb_h-jcytyXKond50FjKBoDDKoSZiCg
+PUT http://localhost:5006/todos/3
+Authorization: yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTAxNzcwLCJleHAiOjE3MzcxMDUzNzB9.sOksKmqH5eR05fOjztjer_cGqIMoqXAwufWoFzvFAyQ
+Content-Type: application/json
+
+{
+    "completed": 1
+}
+
+### Delete a todo DELETE /todo/:id (protected)
+DELETE http://localhost:5006/todos/3
+Authorization: yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM3MTAxNzcwLCJleHAiOjE3MzcxMDUzNzB9.sOksKmqH5eR05fOjztjer_cGqIMoqXAwufWoFzvFAyQ
 Content-Type: application/json
 
 {

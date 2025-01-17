@@ -1,24 +1,29 @@
 import express from "express";
-import db from "../db.js";
+import prisma from "../prismaClient.js";
 
 //  create a new router instance
 const todosRouter = express.Router();
 
 //  get all todos
 todosRouter.get("/", async (req, res) => {
-  const getTodos = await db.prepare("SELECT * FROM todos WHERE user_id =? ");
-  const todos = getTodos.all(req.userId);
+  const todos = await prisma.todo.findMany({
+    where: {
+      userId: req.userId,
+    },
+  });
   res.json(todos);
 });
 // add todos
 
 todosRouter.post("/", async (req, res) => {
   const { task } = req.body;
-  const insertTodo = await db.prepare(
-    "INSERT INTO todos (task, user_id) VALUES (?,?)"
-  );
-  const result = await insertTodo.run(task, req.userId);
-  res.status(201).json({ id: result.lastInsertRowid, task, completed: 0 });
+  const todos = await prisma.todo.create({
+    data: {
+      task,
+      userId: req.userId,
+    },
+  });
+  res.status(201).json({ todos });
 });
 
 // update todos
@@ -26,18 +31,29 @@ todosRouter.post("/", async (req, res) => {
 todosRouter.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { completed } = req.body;
-  const updaatedTask = db.prepare(
-    "UPDATE todos SET  completed = ? WHERE id = ? "
-  );
-  updaatedTask.run(completed, id);
+  const updateTask = await prisma.todo.update({
+    where: {
+      id: parseInt(id),
+      userId: req.userId,
+    },
+
+    data: {
+      completed: !!completed,
+    },
+  });
   res.json({ massage: " Task updated successfully" });
 });
 
 // delete todos
 todosRouter.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  const deleteTask = db.prepare("DELETE FROM todos WHERE id = ? ");
-  deleteTask.run(id);
+  const userId = req.userId;
+  await prisma.todo.delete({
+    where: {
+      id: parseInt(id),
+      userId,
+    },
+  });
   res.json({ massage: "Task deleted successfully" });
 });
 
